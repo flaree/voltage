@@ -29,7 +29,7 @@ export class BotClient {
     
 
         this.client.on('message', async msg => {
-            if (!msg.author || msg.author.bot || !msg.content) return
+            if (!msg.author || msg.author.bot || !(typeof msg.content === 'string')) return
 
             const context = await this.getContext(msg);
             if (!context.command || !context.canExecute) return;
